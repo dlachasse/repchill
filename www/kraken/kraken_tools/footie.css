@@ -1,0 +1,258 @@
+/*
+Main CSS
+-main css
+-masonry css
+-dialog css
+*/
+
+.clear{
+	clear:both;
+}
+
+/*bg*/
+html {
+    height: 100%;
+}
+body {
+	font-size: 11px;
+	font-family: Verdana, Arial, Sans-Serif;
+	padding:40;
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+	/* IE10 Consumer Preview */ 
+	background-image: -ms-linear-gradient(top, #78B15D 0%, #2A5A26 100%);
+
+	/* Mozilla Firefox */ 
+	background-image: -moz-linear-gradient(top, #78B15D 0%, #2A5A26 100%);
+
+	/* Opera */ 
+	background-image: -o-linear-gradient(top, #78B15D 0%, #2A5A26 100%);
+
+	/* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #78B15D), color-stop(1, #2A5A26));
+
+	/* Webkit (Chrome 11+) */ 
+	background-image: -webkit-linear-gradient(top, #78B15D 0%, #2A5A26 100%);
+
+	/* W3C Markup, IE10 Release Preview */ 
+	background-image: linear-gradient(to bottom, #78B15D 0%, #2A5A26 100%);
+}
+
+div#team{
+	background:#2C2323;
+	color:#F1DDC7;
+	font-family: 'Monoton', cursive;
+	font-size: 1.2em;
+	padding:5px 10px 5px 10px;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	float: left;
+	width:150px;
+	}
+
+div#nextGame{
+	background:#F13232;
+	padding:5px 10px 5px 10px;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	color:#333;
+	font-weight: bolder;
+	font-size: 140%; 
+	font-variant: small-caps;
+	float: left;
+	width:225px;
+	}
+
+div#today{
+	background:#67CC0A;
+	color:#3E9C09;
+	font-family: 'Tulpen One', cursive;
+	font-size: 2.2em;
+	padding:4px 4px;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	color:#F7F286;
+	float:left;
+	width:150px;
+	}
+
+div#countdown{
+	background:#2E54A3;
+	padding:15px 15px;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	color:#F1CAC1;
+	float:left;
+	width:150px;
+	}
+
+div#fullsched{
+	background:#C61AFF;
+	padding:15px 15px;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	color:#F1CAC1;
+	float:left;
+}
+
+div.player{
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	margin:5px;
+	display: inline-block;
+	/* Fallback for web browsers that doesn't support RGBa */
+	background: rgb(0, 0, 0);
+	/* RGBa with 0.6 opacity */
+	background: rgba(0, 0, 0, 0.1);
+	/* For IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	08.
+	/* For IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	padding:15px 15px;
+}
+
+label {
+	font-size: 105%;
+	font-weight: bolder; 
+}
+
+input {
+	margin:4px;
+}
+
+img#cat{
+	float:left;
+}
+
+.imgborder{
+width:100%;
+position:absolute;
+height:100%;
+background-color:#F00;
+filter:alpha(opacity=50);
+-moz-opacity:0.5;
+-khtml-opacity: 0.5;
+opacity: 0.5;
+}
+
+#contentwrapper{
+float: left;
+width: 100%;
+}
+
+#contentcolumn{
+padding: 20px 20px;
+background:#283626;
+border-radius:10px;
+-moz-border-radius:10px;
+-webkit-border-radius:10px;
+margin-right: 450px; /*Set right margin to RightColumnWidth*/
+margin-left: 150px;
+}
+
+#rightcolumn{
+float: left;
+padding: 0px 20px;
+width: 300px; /*Width of right column in pixels*/
+margin-left: -450px; /*Set left margin to -(RightColumnWidth) */
+}
+
+#container_masonry {
+  /*margin: 10px 10px;
+  clear: both;
+  border-radius: 5px;
+  float:left;
+  width:100%;
+  */
+}
+
+/* roll call area */
+div#rollCall{
+	background:#95B6AB;
+	padding:5px 10px 5px 10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	color:#333;
+	text-align:center;
+	float:left;
+	}
+div#rollCall h3{
+	margin-bottom:4px;
+	font-size: 14px;
+	font-weight:bold;
+	}
+div#rollCall p{
+	color:#666;
+	margin-bottom:10px;
+	}
+
+.form{
+	float:left;
+}
+
+.subButtonsText{
+	float:left;
+	width:80px;
+}
+.subButtons{
+	float:left;
+}
+div#subButtonLabel{
+	float:left;
+	font-size: 1.6em;
+}
+#addPlayer {
+    width: 50%;
+    margin: 0px auto;
+}
+/* end roll call */
+
+
+/*	
+	masonry
+*/
+
+.item {
+  margin: 10px;
+  float: left;
+}
+/**** Transitions ****/
+.masonry,
+.masonry .masonry-brick {
+  -webkit-transition-duration: 0.7s;
+     -moz-transition-duration: 0.7s;
+      -ms-transition-duration: 0.7s;
+       -o-transition-duration: 0.7s;
+          transition-duration: 0.7s;
+}
+
+.masonry {
+  -webkit-transition-property: width, height;
+     -moz-transition-property: width, height;
+      -ms-transition-property: width, height;
+       -o-transition-property: width, height;
+          transition-property: width, height;
+}
+
+.masonry .masonry-brick {
+  -webkit-transition-property: left, right, top;
+     -moz-transition-property: left, right, top;
+      -ms-transition-property: left, right, top;
+       -o-transition-property: left, right, top;
+          transition-property: left, right, top;
+}
+
+
+/*  dialog css */
+
+/* end dialog*/

@@ -1,0 +1,89 @@
+<?php
+//queries
+		
+		//get all game dates, and determine which one is next!
+		$allGameTimesQ = "SELECT * FROM `schedule`";
+		$allGameTimesQ = mysql_query($allGameTimesQ) or die(mysql_error());
+		while($row = mysql_fetch_array($allGameTimesQ,MYSQL_BOTH)){
+			$allGameTimes[$row['opponent']]=(string) strtotime($row['day']);  //stored as epoch value
+		}
+		$allOpponents=array_flip($allGameTimes);
+		arsort($allGameTimes);
+		$gameCounter=0;
+		foreach($allGameTimes as $team => $time){
+			if($today[0]<$time){
+				$nextGameDate=(string)$time;
+			}
+		}
+
+		$nextOpponent= $allOpponents[(string)$nextGameDate];
+
+		//get all the player names
+		$allPlayersQ= "SELECT `name` FROM `players`";
+		$allPlayersQ = mysql_query($allPlayersQ) or die(mysql_error());
+		while($row = mysql_fetch_array($allPlayersQ)){
+			$allPlayers[]=$row[0];  //stored as epoch value
+		}
+
+		//get all players registered for the next, upcoming game
+		function getAttendingPlayers(){
+			global $nextGameDate;
+			$playersComing=array();
+			$subs=array();
+			$stdPlayers=array();
+			$rollCallQ= "SELECT * FROM `rollcall` WHERE `game`=FROM_UNIXTIME($nextGameDate)";
+			$rollCallQ = mysql_query($rollCallQ) or die(mysql_error());
+			while($row = mysql_fetch_array($rollCallQ)){
+				if($row['sub']){
+					$subs[]=$row['name'];
+				}
+				else{
+					$stdPlayers[]=$row['name'];
+				}
+			}
+			if( (count($subs)+count($stdPlayers))<1 ){ //if no one is attending this game, clear out all peeps from previous game
+				$purgeRollCallQ = "TRUNCATE TABLE `rollcall`";
+			}
+			return array($stdPlayers,$subs);
+		}
+
+	//time & date functions
+	function getNiceDuration($durationInSeconds) {
+	  $duration = '';
+	  $days = floor($durationInSeconds / 86400);
+	  $durationInSeconds -= $days * 86400;
+	  $hours = floor($durationInSeconds / 3600);
+	  $durationInSeconds -= $hours * 3600;
+	  $minutes = floor($durationInSeconds / 60);
+	  $seconds = $durationInSeconds - $minutes * 60;
+
+	  if($days > 0) {
+	    $duration .= '<span style="font-size:300%">'. $days . '</span> days <br/>';
+	  }
+	  if($hours > 0) {
+	    $duration .= '<span style="font-size:300%">' . $hours . '</span>  hours <br/>';
+	  }
+	  if($minutes > 0) {
+	    $duration .= '<span style="font-size:300%">' . $minutes . '</span>  minutes <br/>';
+	  }
+	  if($seconds > 0) {
+	    $duration .= '<span style="font-size:300%"> ' . $seconds . '</span> seconds <br />	';
+	  }
+	  return $duration;
+	}
+
+	//server funcs
+	function selfURL() {
+	$s = empty($_SERVER["HTTPS"]) ? ''
+		: ($_SERVER["HTTPS"] == "on") ? "s"
+		: "";
+	$protocol = strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$s;
+	$port = ($_SERVER["SERVER_PORT"] == "80") ? ""
+		: (":".$_SERVER["SERVER_PORT"]);
+	return $protocol."://".$_SERVER['SERVER_NAME'].$port.$_SERVER['REQUEST_URI'];
+}
+function strleft($s1, $s2) {
+	return substr($s1, 0, strpos($s1, $s2));
+}
+
+?>

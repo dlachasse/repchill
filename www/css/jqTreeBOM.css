@@ -1,0 +1,40 @@
+.divright{
+	margin-left:auto;
+}
+
+
+table.xPlodeTable {
+	margin-left: auto;
+	margin-right: 25px;
+	/*border: 1px solid #999;*/
+}          
+
+table.xPlodeTable tr { 
+	background-color: #FFFFFF; 
+}
+             
+th.lvl  {
+    width:40px;
+	}
+th.pn  {
+    width:130px;
+	}	
+th.description  {
+    width:300px;
+	}
+	
+th.itemnum  {
+    width:50px;
+	}
+th.qty  {
+    width:50px;
+	}
+th.uom  {
+    width:50px;
+	}
+th.source  {
+    width:100px;
+	}
+th.rev  {
+    width:50px;
+	}
